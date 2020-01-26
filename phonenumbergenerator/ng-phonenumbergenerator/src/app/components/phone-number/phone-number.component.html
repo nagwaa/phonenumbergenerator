@@ -1,0 +1,7 @@
+<input type="tel" [(ngModel)]="phoneNumber"/>
+<button (click)="fetchCombinations()" class="btn btn-primary">Get Combinations</button>
+
+<h3> Total number of combinations: {{phoneNumberCombinations.length}}</h3>
+<div *ngFor="let number of phoneNumberCombinations">
+    {{number}}
+</div>

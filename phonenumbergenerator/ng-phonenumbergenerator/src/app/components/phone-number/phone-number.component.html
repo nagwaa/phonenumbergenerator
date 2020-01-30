@@ -13,6 +13,6 @@
 <div *ngIf="isPagingEnabled()" class="pagination-container">
     <button type="button" class="btn pagination-btn" [disabled]="!hasPrevious()"
         (click)="previousPage()">Previous</button>
-    <span>{{ pageStart }} ... {{ pageEnd }} of {{ phoneNumberCombinations.length }}</span>
+    <span>{{ pageStart + 1}} ... {{ pageEnd }} of {{ phoneNumberCombinations.length }}</span>
     <button type="button" class="btn pagination-btn" [disabled]="!hasNext()" (click)="nextPage()">Next</button>
 </div>

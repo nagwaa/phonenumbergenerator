@@ -1,7 +1,18 @@
-<input type="tel" [(ngModel)]="phoneNumber"/>
-<button (click)="fetchCombinations()" class="btn btn-primary">Get Combinations</button>
+<form #telForm="ngForm" (submit)="fetchCombinations(telForm.value)">
+    <input required type="tel" name="phoneNumber" #phoneNumber="ngModel" ngModel pattern="([0-9]{3})?[0-9]{7}"
+        placeholder="Enter Phone number" />
+    <span> Format: 1234567890 or 1234567</span>
+    <button type="submit" class="btn btn-primary" [disabled]="!telForm.valid">Get Combinations</button>
+</form>
 
 <h3> Total number of combinations: {{phoneNumberCombinations.length}}</h3>
-<div *ngFor="let number of phoneNumberCombinations">
+<div *ngFor="let number of currentPageData">
     {{number}}
+</div>
+
+<div *ngIf="isPagingEnabled()" class="pagination-container">
+    <button type="button" class="btn pagination-btn" [disabled]="!hasPrevious()"
+        (click)="previousPage()">Previous</button>
+    <span>{{ pageStart }} ... {{ pageEnd }} of {{ phoneNumberCombinations.length }}</span>
+    <button type="button" class="btn pagination-btn" [disabled]="!hasNext()" (click)="nextPage()">Next</button>
 </div>

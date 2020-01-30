@@ -2,6 +2,31 @@
     display: block;
     margin: 6px;
     color: white;
-    background-color: lightblue;
+    background-color: #337ab7;
     border-radius: 2px;
+    
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+.btn:disabled {
+    background-color: grey;
+    color: black;
+    cursor:not-allowed;
+}
+
+.pagination-container {
+    margin-top: 12px;
+    margin-bottom: 6px;
+    margin-right: 48px;
+}
+
+.pagination-btn {
+    display: inline;
+}
+
+.pagination-count {
+    margin: 0.5em;
 }

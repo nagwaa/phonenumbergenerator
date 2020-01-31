@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of as observableOf } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,3 +13,12 @@ export class ApiRequestService {
     return this.http.get(`http://localhost:8080/api/generate-combinations/${phoneNumber}`, {});
   }
 }
+
+export class StubApiRequestService {
+
+  getPhoneNumberCombinations(phoneNumber: number): Observable<any> {
+    return observableOf([]);
+  }
+
+}
+

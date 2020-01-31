@@ -1,5 +1,6 @@
 package com.assessment.phonenumbergenerator.service;
 
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -26,6 +27,9 @@ public class PhoneNumberGeneratorController {
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/generate-combinations/{phoneNumber}", method = RequestMethod.GET)
     public List<String> generateCombinations(@PathVariable String phoneNumber){
+        if(StringUtils.isEmpty(phoneNumber) || !phoneNumber.matches("([0-9]{3})?[0-9]{7}")){
+            return Collections.emptyList();
+        }
         Set<String> combinations = new HashSet<>();
         // Backward
         combinations.addAll(getPhoneNumberCombinations(phoneNumber, phoneNumber.length() - 1, -1, false));
